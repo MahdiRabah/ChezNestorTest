@@ -14,6 +14,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import { RoomsService } from './rooms/rooms-service';
 import { ClientsService } from './clients/clients-service';
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
