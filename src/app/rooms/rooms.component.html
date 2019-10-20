@@ -1,0 +1,122 @@
+<!--   MAIN   -->
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <div class="row">
+              <h4 style=" margin-top: auto; margin-bottom: auto" class="card-title col-md-10">Rooms Table </h4>
+              <button class="btn col-md-1" (click)="open(content)"><i class="fa fa-plus" style="width: 100%"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>Name</th>
+                  <th>City</th>
+                  <th>Status</th>
+                  <th></th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of roomsList">
+                    <td>{{i.name}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.status}}</td>
+                    <td><button class="btn" (click)="deleteStag(i.id)"><i class="fa fa-trash"></i></button></td>
+                    <td>
+                      <button class="btn" (click)="goToRoomDetail(i)">
+                        <i class="fa fa-angle-double-right"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  MODAL  -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">Add Room </h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form" name="form" (ngSubmit)="formSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="name" type="text" class="form-control" formControlName="name"
+                [ngClass]="{'is-invalid':form.get('name').touched && form.get('name').invalid}" />
+              <div class="invalid-feedback">
+                <div>required</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="adress" type="text" class="form-control" formControlName="adress"
+                [ngClass]="{'is-invalid':form.get('adress').touched && form.get('adress').invalid}" />
+              <div class="invalid-feedback">
+                <div> required </div>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="zip" type="text" class="form-control" formControlName="zip"
+                [ngClass]="{'is-invalid':form.get('zip').touched && form.get('zip').invalid}" />
+              <div class="invalid-feedback">
+                <div> required</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="city" type="text" class="form-control" formControlName="city"
+                [ngClass]="{'is-invalid':form.get('city').touched && form.get('city').invalid}" />
+              <div class="invalid-feedback">
+                <div> required</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="status" type="text" class="form-control" formControlName="status"
+                [ngClass]="{'is-invalid':form.get('status').touched && form.get('status').invalid}" />
+              <div class="invalid-feedback">
+                <div> required</div>
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="formSubmit()">Save</button>
+  </div>
+</ng-template>

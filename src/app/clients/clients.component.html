@@ -1,0 +1,132 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">Add New Client</h4>
+
+    </div>
+    <div class="card-body">
+      <form #Form="ngForm" (ngSubmit)="save(Form)">
+        <div class="row">
+
+
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Full Name" type="text" name="full name" [(ngModel)]="name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+
+              <input matInput placeholder="Email address" type="email" name="email" [(ngModel)]="email">
+            </mat-form-field>
+          </div>
+
+
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Birth Date" type="date" name="birthDate" [(ngModel)]="birthDate">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Nationality" type="text" name="nationality" [(ngModel)]="nationality">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Phone" type="text" name="phone" [(ngModel)]="phone">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Status" type="text" name="status" [(ngModel)]="status">
+            </mat-form-field>
+          </div>
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save(Form)">Save</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <div class="row">
+              <h4 style=" margin-top: auto; margin-bottom: auto" class="card-title col-md-10">Clients Table </h4>
+              <button class="btn col-md-1" (click)="open(content)"><i class="fa fa-plus" style="width: 100%"></i>
+              </button>
+            </div>
+
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Birth Date</th>
+                  <th>Nationality</th>
+                  <th>Status</th>
+                  <th></th>
+
+
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let i of clientsList">
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.birthDate}}</td>
+                    <td>{{i.nationality}}</td>
+                    <td>{{i.status}}</td>
+
+                    <td><button class="btn" (click)="deleteRes(row.id)"><i class="fa fa-trash"></i></button></td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
